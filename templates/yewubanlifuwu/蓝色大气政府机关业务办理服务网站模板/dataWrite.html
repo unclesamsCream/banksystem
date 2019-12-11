@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>证据录入</title>
+    <link href="css/dataWrite.css" rel="stylesheet" type="text/css">
+    <link href="js/bstable/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bodyClass" onload="init()">
+<div class="dataTit">
+    <h3 class="dataDivTop">案件详情登录</h3>
+    <table border="0" class="dataTable">
+        <tr>
+            <td class="mustSpan"><span >*</span>案件名称：</td>
+            <td colspan="3"><input type="text" class="dataLongInput" required="required"></td>
+        </tr>
+        <tr>
+            <td class="mustSpan"><span >*</span>协同编号：</td>
+            <td><input type="text" class="dataInput" required="required"></td>
+            <td class="mustSpan"><span >*</span>法院案件编号：</td>
+            <td><input type="text" class="dataInput" required="required"></td>
+        </tr>
+
+        <tr>
+            <td class="mustSpan"><span >*</span>公安案件编号：</td>
+            <td><input type="text" class="dataInput" required="required"></td>
+            <td class="mustSpan"><span >*</span>检察院统一受案号：</td>
+            <td><input type="text" class="dataInput" required="required"></td>
+        </tr>
+    </table>
+</div>
+<div class="dataCon">
+    <div class="dataConTab">
+        <ul class="dataTabUl">
+            <li><a href="javascript:void(0)" class="dataActive"><i class="glyphicon glyphicon-th-list"></i>案件梗概</a> </li>
+            <li><a href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i>涉案人员</a> </li>
+            <li><a href="javascript:void(0)"><i class="glyphicon glyphicon-file"></i>法律文书</a> </li>
+            <li><a href="javascript:void(0)"><i class="glyphicon glyphicon-briefcase"></i>案件宗卷</a> </li>
+            <li><a href="javascript:void(0)"><i class="glyphicon glyphicon-hand-up"></i>智能证据标准指引</a> </li>
+        </ul>
+    </div>
+    <div class="dataConBox">
+        <div class="dataBoxSub" style="display: block"  >
+            <table class="dataTable">
+                <tr>
+                    <td class="mustSpan"><span >*</span>案件文号</td>
+                    <td><input type="text" class="dataInput" required="required"></td>
+                    <td class="mustSpan"><span >*</span>案件类别</td>
+                    <td><select class="dataSelect"><option></option></select></td>
+                    <td class="mustSpan"><span >*</span>案件性质</td>
+                    <td><select class="dataSelect"><option></option></select></td>
+                </tr>
+                <tr>
+                    <td class="mustSpan">侦查单位</td>
+                    <td><input type="text" class="dataInput"></td>
+                    <td class="mustSpan">移送单位</td>
+                    <td><input type="text" class="dataInput"></td>
+                    <td class="mustSpan">移送时间</td>
+                    <td><input type="date" class="dataInput"></td>
+                </tr>
+                <tr>
+                    <td class="mustSpan">报案时间</td>
+                    <td><input type="date" class="dataInput"></td>
+                    <td class="mustSpan">发案时间</td>
+                    <td><input type="date" class="dataInput"></td>
+                    <td class="mustSpan">发现时间</td>
+                    <td><input type="date" class="dataInput"></td>
+                </tr>
+                <tr>
+                    <td class="mustSpan">发案区划</td>
+                    <td><input type="text" class="dataInput"></td>
+                    <td class="mustSpan">发案社区</td>
+                    <td><input type="text" class="dataInput"></td>
+                    <td class="mustSpan">发案地点</td>
+                    <td><input type="text" class="dataInput"></td>
+                </tr>
+                <tr>
+                    <td class="mustSpan">涉案人员</td>
+                    <td colspan="5"><input type="text" class="dataLongInput"></td>
+
+                </tr>
+                <tr>
+                    <td class="mustSpan">简要案情</td>
+                    <td colspan="5" ><textarea class="dataText"></textarea></td>
+                </tr>
+            </table>
+        </div>
+        <div class="dataBoxSub"  >
+           <div class="dataConTopBut">
+               <a href="javascript:void(0)" class="green" onclick="Tail()"><i class="glyphicon glyphicon-plus"></i> 新增</a> <a href="javascript:void(0)" class="red"><i class="glyphicon glyphicon-remove"></i>删除</a>
+           </div>
+            <div class="personType01">犯罪嫌疑人</div>
+            <ul class="dataPersonUl" id="personTail">
+                <li>
+                    <div class="dataPersonLeft"><img src="img/noPerson.png"> </div>
+                <div class="dataPersonRight">
+                    <p class="perIcon"><span class="glyphicon glyphicon-user"></span></p>
+                <p class="perText">张大大</p>
+                <p class="perText1" >	520102199012012543</p>
+                <p class="perText"><a href="javascript:void (0)" class="blue" onclick="Tail()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p></div></li>
+                <li>
+                    <div class="dataPersonLeft"><img src="img/noPerson.png"> </div>
+                    <div class="dataPersonRight">
+                        <p class="perIcon"><span class="glyphicon glyphicon-user"></span></p>
+                        <p class="perText">张大大</p>
+                        <p class="perText1" >	520102199012012543</p>
+                        <p class="perText"><a href="javascript:void (0)" class="blue" onclick="Tail()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p></div></li>
+                <li>
+                    <div class="dataPersonLeft"><img src="img/noPerson.png"> </div>
+                    <div class="dataPersonRight">
+                        <p class="perIcon"><span class="glyphicon glyphicon-user"></span></p>
+                        <p class="perText">张大大</p>
+                        <p class="perText1" >	520102199012012543</p>
+                        <p class="perText"><a href="javascript:void (0)" class="blue" onclick="Tail()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p></div></li>
+            </ul>
+            <div class="personType01">受害人</div>
+            <ul class="dataPersonUl">
+                <li>
+                    <div class="dataPersonLeft"><img src="img/noPerson.png"> </div>
+                    <div class="dataPersonRight">
+                        <p class="perIcon"><span class="glyphicon glyphicon-user"></span></p>
+                        <p class="perText">张大大</p>
+                        <p class="perText1" >	520102199012012543</p>
+                        <p class="perText"><a href="javascript:void (0)" class="blue" onclick="Tail()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p></div></li>
+                <li>
+                    <div class="dataPersonLeft"><img src="img/noPerson.png"> </div>
+                    <div class="dataPersonRight">
+                        <p class="perIcon"><span class="glyphicon glyphicon-user"></span></p>
+                        <p class="perText">张大大</p>
+                        <p class="perText1" >	520102199012012543</p>
+                        <p class="perText"><a href="javascript:void (0)" class="blue" onclick="Tail()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p></div></li>
+                <li>
+                    <div class="dataPersonLeft"><img src="img/noPerson.png"> </div>
+                    <div class="dataPersonRight">
+                        <p class="perIcon"><span class="glyphicon glyphicon-user"></span></p>
+                        <p class="perText">张大大</p>
+                        <p class="perText1" >	520102199012012543</p>
+                        <p class="perText"><a href="javascript:void (0)" class="blue" onclick="Tail()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p></div></li>
+            </ul>
+        </div>
+        <div class="dataBoxSub" >
+            <div class="dataConTopBut">
+                <a href="javascript:void(0)" class="green" onclick="TailLaw()"><i class="glyphicon glyphicon-plus"></i> 新增</a> <a href="javascript:void(0)" class="red"><i class="glyphicon glyphicon-remove"></i>删除</a>
+            </div>
+            <ul class="lawtailUl">
+                <li><p><img src="img/lawIcon.png" class="lawImg"/> </p>
+                <p>周三逮捕文书</p>
+                    <p class="perText"><a href="javascript:void (0)" class="blue" onclick="TailLaw()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p>
+                </li>
+                <li><p><img src="img/lawIcon1.png" class="lawImg"/> </p>
+                    <p>周三逮捕文书</p>
+                    <p class="perText"><a href="javascript:void (0)" class="blue" onclick="TailLaw()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p>
+                </li>
+            </ul>
+
+        </div>
+        <div class="dataBoxSub" >
+
+            <div class="dataConTopBut">
+                <a href="javascript:void(0)" class="green" onclick="TailList()"><i class="glyphicon glyphicon-plus"></i> 新增</a> <a href="javascript:void(0)" class="red"><i class="glyphicon glyphicon-remove"></i>删除</a>
+            </div>
+            <ul class="caseList">
+                <li><div class="caseListIMg"><img src="img/listIcon.png"></div>
+                <div class="caseListText">证据材料宗卷</div>
+                <div class="clear"></div>
+                <div class="caseListDown1">证据材料卷</div>
+                    <div class="caseListDown1 borderLeft"><p>文件</p>
+                        <p class="red">1</p>
+                    </div>
+                    <p class="perText"><a href="javascript:void (0)" class="blue" onclick="TailList()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p>
+                </li>
+                <li><div class="caseListIMg"><img src="img/listIcon.png"></div>
+                    <div class="caseListText">证据材料宗卷</div>
+                    <div class="clear"></div>
+                    <div class="caseListDown1">证据材料卷</div>
+                    <div class="caseListDown1 borderLeft"><p>文件</p>
+                        <p class="red">1</p>
+                    </div>
+                    <p class="perText"><a href="javascript:void (0)" class="blue" onclick="TailList()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p>
+                </li>
+                <li><div class="caseListIMg"><img src="img/listIcon.png"></div>
+                    <div class="caseListText">证据材料宗卷</div>
+                    <div class="clear"></div>
+                    <div class="caseListDown1">证据材料卷</div>
+                    <div class="caseListDown1 borderLeft"><p>文件</p>
+                        <p class="red">1</p>
+                    </div>
+                    <p class="perText"><a href="javascript:void (0)" class="blue" onclick="TailList()">修改</a><a href="javascript:void (0)" class="red">删除</a> </p>
+                </li>
+            </ul>
+            </div>
+        <div class="dataBoxSub" >
+            <div class="dataTree">
+                <p class="treeTit">目录树</p>
+                <p><ul id="treeDemo" class="ztree"></ul></p>
+            </div>
+            <div class="dataTreeList">
+                <p class="treeTit">选择文件</p>
+                <table class="dataTable">
+                    <tr >
+                        <td class="mustSpan"><span >*</span>文件名称：</td>
+                        <td><input type="text" class="dataInput" required="required"></td>
+                        <td class="mustSpan"><span >*</span>文件编号：</td>
+                        <td><input type="text" class="dataInput" required="required"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="mustSpan"><span >*</span>选择文件：</td>
+                        <td colspan="3" ><input type="file" class="dataLongInput"/></td>
+                    </tr>
+
+
+                </table>
+                <p><a href="javascript:void(0)" class="add"><i class="glyphicon glyphicon-plus"></i>继续添加</a> </p>
+            </div>
+        </div>
+
+    </div>
+    <p class="paddStyle"><button class="buttonSave">保存</button><button class="buttonCanle">取消</button></p>
+</div>
+<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+<script src="js/ztree/jquery.ztree.all-3.5.js"></script>
+<script src="js/listTree.js"></script>
+<script src="js/layer_v2.1/layer/layer.js"></script>
+</body>
+</html>

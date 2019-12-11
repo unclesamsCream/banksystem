@@ -1,0 +1,103 @@
+{% extends 'systemBase.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        购物车管理
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>商品名</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>合计</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for cart in cartshowlist %}
+                                        <tr>
+                                            <td>{{ cart.id }}</td>
+                                            <td class="text-nowrap">{{ cart.name}}</td>
+                                            <td>{{ cart.price }}</td>
+                                            <td>{{ cart.num }}</td>
+                                            <td>{{ cart.allprice }}</td>
+                                            <td>{{ cart.allprice }}</td>
+                                            <td>
+                                                   <div class="row mt-4">
+                                                         <div class="col-4">
+
+                                        </div>
+                                        <div class="col-2">
+                                            <a href="/delcart?id={{ cart.id }}"><button type="submit" class="btn btn-primary px-5">删除</button></a>
+                                        </div>
+
+                                                   </div>
+                                            </td>
+
+
+                                        </tr>
+                                {% endfor %}
+
+                                    <form action="/checkcart/" method="post">
+                                        {% csrf_token %}
+
+                                <tr>
+
+                                   <td>合计：</td> <td><input name="count" readonly="readonly" type="text" value="{{ count }}"></td>
+                                    <td>选择账户</td><td>
+
+<select  class="form-control" name="cardNum">
+    {% for foo in accountlist %}
+        <option value="{{ foo.id }}">{{ foo.IDCard }}</option>
+
+    {% endfor %}
+
+
+</select>
+
+                                </td>
+                                <td>密码</td><td> <input name="payPassword" type="password" class="form-control">
+</td>
+                                    <td><div class="row mt-4">
+
+                                                           <div class="col-4">
+
+                                        </div>
+                                                              <div class="col-2">
+                                                            <input type="submit" class="btn btn-primary px-5" value="结算"/>
+                                        </div>
+                                    </div></td>
+
+
+                                </tr>
+                                    </form>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    <div>{% if isGo %}
+
+                        {% else %}
+                                                                        该账户余额不足或者被冻结或密码不正确，请换卡重试
+
+                    {% endif %}</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+      
+{% endblock %} 

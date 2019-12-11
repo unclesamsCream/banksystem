@@ -1,0 +1,83 @@
+
+{% extends 'systemBase.html' %}
+{% load staticfiles %}
+{% block content %}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                添加商品
+                            </div>
+                            <div class="card-header bg-light">
+                                    {{ message }}
+                            </div>
+                            <form action="/addgoods/" method="post">
+                            {% csrf_token %}
+
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="normal-input" class="form-control-label">商品名</label>
+                                            <input name="goodsname" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="read-only" class="form-control-label">价格</label>
+                                            <input name="goodsprice"type="number" step="0.01" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <!-- <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Static</label>
+                                            <p class="form-control-plaintext">email@example.com</p>
+                                        </div>
+                                    </div> -->
+                                </div>
+
+                                       <div class="row">
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="read-only" class="form-control-label">数量</label>
+                                            <input name="goodsnum" type="number" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <!-- <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Static</label>
+                                            <p class="form-control-plaintext">email@example.com</p>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                    <div class="row mt-4">
+                                        <div class="col-8">
+
+                                        </div>
+                                        <div class="col-2">
+                                            <input type="submit" class="btn btn-primary px-5" value="添加"></input>
+                                        </div>
+
+                                    </div>
+
+
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+{% endblock %} 
+      

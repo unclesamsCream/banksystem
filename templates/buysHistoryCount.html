@@ -1,0 +1,59 @@
+{% extends 'systemBase.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        购物消费记录
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>购买时间</th>
+                                    <th>金额</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for buys in buyslist %}
+                                        <tr>
+                                            <td>{{ buys.id }}</td>
+                                            <td class="text-nowrap">{{ buys.create_time}}</td>
+                                           <td>{{ buys.count }}</td>
+                                            <td>
+                                                <div class="row mt-4">
+
+                                                           <div class="col-4">
+
+                                        </div>
+                                                              <div class="col-2">
+                                                            <a href="/historydetail?id={{ buys.id }}"><button type="submit" class="btn btn-primary px-5">查看</button></a>
+                                        </div>
+                                    </div>
+
+                                            </td>
+
+
+                                        </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+      
+{% endblock %} 

@@ -1,0 +1,401 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% if request.session.root %}
+        网上银行管理系统
+        {% else %}
+        个人网上银行
+        {% endif %}
+    </title>
+    <link rel="stylesheet" href="{% static 'static/vendor/simple-line-icons/css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'static/vendor/font-awesome/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'static/css/styles.css' %}">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    <nav class="navbar page-header">
+        <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'static/imgs/logo.png' %}" alt="logo">
+        </a>
+
+        <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none">
+                <a href="#">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-pill badge-danger">5</span>
+                </a>
+            </li>
+
+            <li class="nav-item d-md-down-none">
+                <a href="#">
+                    <i class="fa fa-envelope-open"></i>
+                    <span class="badge badge-pill badge-danger">5</span>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{% static 'static/imgs/avatar-1.png' %}" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">{{ request.session.user_name }}</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">Account</div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-user"></i> Profile
+                    </a>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> Messages
+                    </a>
+
+                    <div class="dropdown-header">Settings</div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-bell"></i> Notifications
+                    </a>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-wrench"></i> Settings
+                    </a>
+
+                    <a href="/logout/" class="dropdown-item">
+                        <i class="fa fa-lock"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    {% if request.session.root %}
+                        <li class="nav-title">银行客户管理平台</li>
+
+                        <li class="nav-item">
+                            <a href="/index/" class="nav-link active">
+                                <i class="icon icon-speedometer"></i> 系统概况
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-dropdown">
+                            <a href="#" class="nav-link nav-dropdown-toggle">
+                                <i class="icon icon-target"></i> 账户管理 <i class="fa fa-caret-left"></i>
+                            </a>
+
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a href="/userInformation/" class="nav-link">
+                                        <i class="icon icon-target"></i> 个人信息修改
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/usersManage/" class="nav-link">
+                                        <i class="icon icon-target"></i> 用户查看
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/unfreeze/" class="nav-link">
+                                        <i class="icon icon-target"></i> 账户解冻
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/freeze/" class="nav-link">
+                                        <i class="icon icon-target"></i> 账户冻结
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-dropdown">
+                                <a href="#" class="nav-link nav-dropdown-toggle">
+                                    <i class="icon icon-graph"></i> 密码管理 <i class="fa fa-caret-left"></i>
+                                </a>
+        
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a href="/findPassword/" class="nav-link">
+                                            <i class="icon icon-target"></i> 修改密码
+                                        </a>
+                                    </li>
+        
+                                    <!-- <li class="nav-item">
+                                        <a href="/draw/" class="nav-link">
+                                            <i class="icon icon-target"></i> 重置密码
+                                        </a>
+                                    </li> -->
+                                </ul>
+                            </li>
+                        <li class="nav-item nav-dropdown">
+                                <a href="#" class="nav-link nav-dropdown-toggle">
+                                    <i class="icon icon-graph"></i> 商品管理 <i class="fa fa-caret-left"></i>
+                                </a>
+
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a href="/goodslist/" class="nav-link">
+                                            <i class="icon icon-target"></i> 商品列表
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="/addgoods/" class="nav-link">
+                                            <i class="icon icon-target"></i> 添加商品
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                    {% else %}
+                        <li class="nav-title">客户管理系统</li>
+
+                        <li class="nav-item">
+                            <a href="/index/" class="nav-link active">
+                                <i class="icon icon-speedometer"></i> 用户概况
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-dropdown">
+                            <a href="#" class="nav-link nav-dropdown-toggle">
+                                <i class="icon icon-target"></i> 账户管理 <i class="fa fa-caret-left"></i>
+                            </a>
+
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a href="/userInformation/" class="nav-link">
+                                        <i class="icon icon-target"></i> 个人信息修改
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/manage/" class="nav-link">
+                                        <i class="icon icon-target"></i> 账户查看
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/addAccount/" class="nav-link">
+                                        <i class="icon icon-target"></i> 添加账户
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/freeze/" class="nav-link">
+                                        <i class="icon icon-target"></i> 账户冻结
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                        <a href="/delete/" class="nav-link">
+                                            <i class="icon icon-target"></i> 账户删除
+                                        </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item nav-dropdown">
+                                <a href="#" class="nav-link nav-dropdown-toggle">
+                                    <i class="icon icon-graph"></i> 交易 <i class="fa fa-caret-left"></i>
+                                </a>
+        
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a href="/deposit/" class="nav-link">
+                                            <i class="icon icon-target"></i> 存款
+                                        </a>
+                                    </li>
+        
+                                    <li class="nav-item">
+                                        <a href="/draw/" class="nav-link">
+                                            <i class="icon icon-target"></i> 转账
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        <li class="nav-item nav-dropdown">
+                            <a href="#" class="nav-link nav-dropdown-toggle">
+                                <i class="icon icon-energy"></i> 密码管理 <i class="fa fa-caret-left"></i>
+                            </a>
+
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a href="/findPassword/" class="nav-link">
+                                        <i class="icon icon-energy"></i> 更改密码
+                                    </a>
+                                </li>
+
+                                <!-- <li class="nav-item">
+                                    <a href="buttons.html" class="nav-link">
+                                        <i class="icon icon-energy"></i> 更改密码
+                                    </a>
+                                </li> -->
+
+                                <!-- <li class="nav-item">
+                                    <a href="cards.html" class="nav-link">
+                                        <i class="icon icon-energy"></i> 重置密码
+                                    </a>
+                                </li> -->
+
+                                <!-- <li class="nav-item">
+                                    <a href="modals.html" class="nav-link">
+                                        <i class="icon icon-energy"></i> Modals
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="tabs.html" class="nav-link">
+                                        <i class="icon icon-energy"></i> Tabs
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="progress-bars.html" class="nav-link">
+                                        <i class="icon icon-energy"></i> Progress Bars
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="widgets.html" class="nav-link">
+                                        <i class="icon icon-energy"></i> Widgets
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-dropdown">
+                                <a href="#" class="nav-link nav-dropdown-toggle">
+                                    <i class="icon icon-graph"></i> 商城 <i class="fa fa-caret-left"></i>
+                                </a>
+
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a href="/goodslist/" class="nav-link">
+                                            <i class="icon icon-target"></i> 商品列表
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="/cartlist/" class="nav-link">
+                                            <i class="icon icon-target"></i> 购物车
+                                        </a>
+                                    </li>
+                                         <li class="nav-item">
+                                        <a href="/historyaccount/" class="nav-link">
+                                            <i class="icon icon-target"></i> 购买记录
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        <!-- <li class="nav-item nav-dropdown">
+                            <a href="#" class="nav-link nav-dropdown-toggle">
+                                <i class="icon icon-graph"></i> Charts <i class="fa fa-caret-left"></i>
+                            </a>
+
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a href="chartjs.html" class="nav-link">
+                                        <i class="icon icon-graph"></i> Chart.js
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="forms.html" class="nav-link">
+                                <i class="icon icon-puzzle"></i> Forms
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="tables.html" class="nav-link">
+                                <i class="icon icon-grid"></i> Tables
+                            </a>
+                        </li>
+
+                        <li class="nav-title">More</li>
+
+                        <li class="nav-item nav-dropdown">
+                            <a href="#" class="nav-link nav-dropdown-toggle">
+                                <i class="icon icon-umbrella"></i> Pages <i class="fa fa-caret-left"></i>
+                            </a>
+
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a href="blank.html" class="nav-link">
+                                        <i class="icon icon-umbrella"></i> Blank Page
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="login.html" class="nav-link">
+                                        <i class="icon icon-umbrella"></i> Login
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="register.html" class="nav-link">
+                                        <i class="icon icon-umbrella"></i> Register
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="invoice.html" class="nav-link">
+                                        <i class="icon icon-umbrella"></i> Invoice
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="404.html" class="nav-link">
+                                        <i class="icon icon-umbrella"></i> 404
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="500.html" class="nav-link">
+                                        <i class="icon icon-umbrella"></i> 500
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="settings.html" class="nav-link">
+                                        <i class="icon icon-umbrella"></i> Settings
+                                    </a>
+                                </li>
+                            </ul>
+                        </li> -->
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+{% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+<script src="{% static 'static/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'static/vendor/popper.js/popper.min.js' %}"></script>
+<script src="{% static 'static/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'static/vendor/chart.js/chart.min.js' %}"></script>
+<script src="{% static 'static/js/carbon.js' %}"></script>
+<script src="{% static 'static/js/demo.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>法律文书</title>
+    <link href="css/dataWrite.css" rel="stylesheet" type="text/css">
+    <link href="css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body class="bodyClass">
+<div class="dataCon"><div class="dataBoxSub" style="display: block">
+    <div class="dataTree">
+        <p class="treeTit">目录树</p>
+        <p><ul id="treeDemo1" class="ztree"></ul></p>
+    </div>
+    <div class="dataTreeList">
+        <p class="treeTit">选择文件</p>
+        <table class="dataTable">
+            <tr >
+                <td class="mustSpan"><span >*</span>文件名称：</td>
+                <td><input type="text" class="dataInput" required="required"></td>
+                <td class="mustSpan"><span >*</span>文件编号：</td>
+                <td><input type="text" class="dataInput" required="required"></td>
+
+            </tr>
+            <tr>
+                <td class="mustSpan"><span >*</span>选择文件：</td>
+                <td colspan="3" ><input type="file" class="dataLongInput"/></td>
+            </tr>
+
+
+        </table>
+        <p><a href="javascript:void(0)" class="add"><i class="glyphicon glyphicon-plus"></i>继续添加</a> </p>
+        <p class="paddStyle1"><button class="buttonSave">保存</button><button class="buttonCanle">取消</button></p>
+    </div>
+
+</div></div>
+
+
+<script src="js/jquery/jquery-2.2.0.min.js"></script>
+<script src="js/ztree/jquery.ztree.all-3.5.js"></script>
+<script src="js/listTree.js"></script>
+
+</body>
+</html>

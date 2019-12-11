@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+    <title></title>
+
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+
+
+
+    <style>
+        .department_main{padding: 5px 5px 0 5px}
+        .department_main span{
+            display: none;
+        }
+        .department_main label{width: 10%;text-align: right;font-size: 12px;display: inline-block}
+
+        .department_main textarea{resize: none;border: 1px #ccc solid;width: 88%;height: 120px;background-color: #fff;border-radius: 4px;}
+        .but_reply{
+
+            background-color: #ff6b29 !important;
+            float: right !important;
+            padding: 5px 15px;
+            color: #ffffff;
+            border-radius: 4px;
+            border:none;
+            margin-top: 10px;
+
+
+        }
+        .replyHistoy{
+            width: 90%;
+            margin-left: 8%;
+            padding-top: 5px;
+            border-top:1px solid #cccccc;
+            margin-top: 20px;
+        }
+.chageTab{
+    padding: 5px;
+    font-size: 12px;
+}
+        .chageTab a{
+            padding-left: 10px;
+            padding-right: 10px;
+            display: inline-block;
+            color: #666666;
+            text-decoration: none;
+        }
+        .active{
+            font-weight: bold;
+        }
+        .borderRiht{
+            border-right: 1px solid #cccccc;
+        }
+        .replyUl{
+            width: 98%;
+            margin-left: 1%;
+            margin-top: 10px;
+        }
+        .replyUl li{
+            width: 99%;
+            font-size: 12px;
+          padding-top: 10px;
+            padding-bottom: 10px;
+            border-top:1px dashed #cccccc;
+            display: inline-block;
+
+
+        }
+        .replyUl li img{
+            width: 16px;
+        }
+        .replyUl li div{
+           padding: 5px;
+            float: left;
+            width: 98%;
+        }
+        .colorStyle{
+            color: #999;
+        }
+    </style>
+</head>
+<body style="background-color: #ecf0f5;font-family: 微软雅黑;color: #475059;overflow: auto">
+<div class="news_main">
+    <div class=" news_right" style="width:98.5%">
+        <form id="recordForm" onsubmit="return false;">
+            <div class="department_main">
+                <input type="hidden" name="case_id" th:value="${caseId}"/>
+                <label style="position: relative;top:-75px">回复：</label>
+                <textarea  name="supervise_info"></textarea>
+            </div>
+            <div class="r_right" style="margin-right: 2%">
+                <button class="but_reply">保存</button>
+            </div>
+        </form>
+        <div class="replyHistoy left">
+            <div class="l_left chageTab"><a href="javascript:void(0)" class="active borderRiht">按类型</a><a href="javascript:void(0)">按时间</a>  </div>
+            <ul class="replyUl left">
+                <li><img src="img/deng1.png" class="left"><div>
+                    <p><span>水务局：</span><span>你们的挑战…好有挑战性啊</span></p>
+                    <p><span class="left colorStyle">6月12日 16:41</span><span class="r_right"><a href="javscript:void(0)" class="colorStyle">回复</a> </span></p>
+                </div> </li>
+                <li><img src="img/deng1.png" class="left"><div>
+                    <p><span>水务局：</span><span>湾小伙回到了台湾，给他的盆友们说：我给你们讲哦，大陆的人真的超级穷的，身上没有现金的。只带个手机，真是有够机车的，唉，所以他们吃不起茶叶蛋也是可以理解的</span></p>
+                    <p><span class="left colorStyle">6月12日 16:41</span><span class="r_right"><a href="javscript:void(0)" class="colorStyle">回复</a> </span></p>
+                </div> </li>
+                <li><img src="img/deng1.png" class="left"><div>
+                    <p><span>水务局：</span><span>你们的挑战…好有挑战性啊</span></p>
+                    <p><span class="left colorStyle">6月12日 16:41</span><span class="r_right"><a href="javscript:void(0)" class="colorStyle">回复</a> </span></p>
+                </div> </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script>
+    $(function(){
+        //保存按钮
+        $(".but_save").on("click",function(){
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/case/supervise.shtm",
+                data: $('#recordForm').serialize(),
+                success:function (result) {
+                    var msg = result.msg;
+                    parent.layer.msg(msg);
+                    if(result.code==200){
+                        parent.location.reload();
+                        //$('.but_supervise', parent.document).hide();
+                        //parent.loadCaseFlow();
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    }
+                }
+            })
+        });
+    });
+    function loadQuestions(){
+
+    }
+</script>
+</body>
+</html>

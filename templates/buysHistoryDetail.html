@@ -1,0 +1,64 @@
+{% extends 'systemBase.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        消费记录详情
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>商品名</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>合计</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for buys in busdetails %}
+                                        <tr>
+                                            <td>{{ buys.id }}</td>
+                                            <td class="text-nowrap">{{ buys.name}}</td>
+                                            <td>{{ buys.price }}</td>
+                                            <td>{{ buys.num }}</td>
+                                            <td>{{ buys.goodspriceall }}</td>
+
+
+                                        </tr>
+                                {% endfor %}
+                                <tr>
+                                    
+
+                                    <td><div class="row mt-4">
+                                        
+                                                           <div class="col-4">
+
+                                        </div>
+                                                              <div class="col-2">
+                                                            <a href="/historyaccount"><button type="submit" class="btn btn-primary px-5">返回</button></a>
+                                        </div>
+                                    </div></td>
+                                    
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+      
+{% endblock %} 

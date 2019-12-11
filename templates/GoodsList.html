@@ -1,0 +1,77 @@
+{% extends 'systemBase.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        商品管理
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>商品名</th>
+                                    <th>价格</th>
+                                    <th>数量</th>
+                                    <th style="text-align: center">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for goods in goodslist %}
+                                        <tr>
+                                            <td>{{ goods.id }}</td>
+                                            <td class="text-nowrap">{{ goods.name}}</td>
+                                            <td>{{ goods.price }}</td>
+                                            <td>{{ goods.num }}</td>
+
+                                            <td>
+                                                  <div class="row mt-4">
+                                                         {% if request.session.root %}
+
+                                        <div class="col-4">
+
+                                        </div>
+                                        <div class="col-2">
+                                            <a href="/delgoods?id={{ goods.id }}"><button type="submit" class="btn btn-primary px-5">删除</button></a>
+                                        </div>
+
+                                                      <div class="col-1"></div>
+                                                        <div class="col-2">
+                                                            <a href="/editgoods?id={{ goods.id }}"><button type="submit" class="btn btn-primary px-5">编辑</button></a>
+                                        </div>
+
+                                                      {% else %}
+                                                                  <div class="col-4">
+
+                                        </div>
+                                                              <div class="col-2">
+                                                            <a href="/addcart?id={{ goods.id }}"><button type="submit" class="btn btn-primary px-5">添加购物车</button></a>
+                                        </div>
+
+                                                      {% endif %}
+                                    </div>
+
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+      
+{% endblock %} 
